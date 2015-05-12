@@ -26,7 +26,7 @@
 (function(){ // :)
 
 // Default URL for animation iframe. This gets overlay'ed over your page.
-var dfurl = 'https://fightforthefuture.github.io/stop-comcast-widget/iframe';
+var dfurl = 'https://fightforthefuture.github.io/usafreedom-widget/iframe';
 
 
 /**
