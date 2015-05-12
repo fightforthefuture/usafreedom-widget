@@ -1,0 +1,123 @@
+---
+---
+<!doctype html>
+<html>
+<head>
+	<!-- Styles -->
+	<meta charset="UTF-8"> 
+	<link rel="stylesheet" type="text/css" href="css/min/modal.min.css">
+	<script type="text/javascript" src="//use.typekit.net/aml1eoz.js"></script>
+    <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+
+<div id="scene">
+
+
+	<div id="modal">
+		<div id="step1">
+			<a class="close" href="#"></a>
+			<div class="cta">
+				<!--
+				<h1 class="headline">
+					<em>Comcast is out of control.</em>
+				</h1>
+				-->
+				<p>
+					{% include cta_main.html %}
+				</p>
+			</div>
+			<form name="petition" id="petition" method="post">
+				<div class="fields">
+					<input type="text" name="member[first_name]" id="first_name" placeholder="Name"/>
+					<input type="text" name="member[email]" id="email" placeholder="Email"/>
+					<input type="text" name="member[street_address]" id="street_address" placeholder="Address"/>
+					<input type="text" name="member[postcode]" id="zip" placeholder="Zip / Postcode"/>
+				</div>
+				<input type="hidden" name="country" id="country" value="US"/>
+				<div class="clear"></div>
+				<div class="action">
+					<button id="sign" type="submit"><strong>{% include button_action_main.html %}</strong></button>
+					<div class="clear"></div>
+					<div class="disclosure nice-check">
+						<input id="opt-in" type="checkbox" checked="checked">
+						<label class="checkbox" for="opt-in">
+							<span id="fftf_disclosure">
+								{% include disclosure_fftf.html %}
+							</span>
+						</label>
+						{% include disclosure_policies.html %}
+					</div>
+				</div>
+			</form>
+			<form name="direct_call" id="direct_call" method="post" style="display: none;">
+				<div class="fields">
+					<input class="long" type="text" name="phone" id="phone_front" placeholder="Enter your phone number"/>
+					<button id="skip_to_call" type="submit"><strong>{% include button_action_call_only.html %}</strong></button>
+				</div>
+				<div class="clear"></div>
+				<div class="action">
+					<div class="disclosure text-only">
+						{% include cta_call_info.html %}
+					</div>
+				</div>
+			</form>
+		</div>
+		<div id="stepCall" class="extra-modal">
+			<a class="close" href="#"></a>
+			{% include cta_call_headline.html %}
+			<p>
+				{% include cta_call_info.html %}
+			</p>
+			<div class="fields centered">
+				<input type="text" name="phone" id="phone" placeholder="Enter your phone number" autocomplete="off"/>
+			</div>
+			<button id="call" type="button" autocomplete="off">{% include button_call_secondary.html %}</button>
+			
+			<div class="clear"></div>
+			<div class="donate-ask">
+				{% include ask_share_donate.html %}
+			</div>
+			
+		</div>
+		<div id="stepFinal" class="extra-modal">
+			<a class="close" href="#"></a>
+			<div class="defaultText">
+				{% include cta_final.html %}
+			</div>
+			<div class="altText" style="display: none;">
+				{% include cta_call_instructions.html %}
+			</div>
+			<div class="share-links">
+				<script type="text/javascript">{% include share_tweet_text.js %}</script>
+				<a href="https://www.facebook.com/sharer.php?u=www.ifeelnaked.org" target="_blank" class="btn btn-primary share facebook">Share on Facebook</a>
+				<a href="#" target="_blank" class="btn btn-primary share twitter">Share on Twitter</a>
+			</div>
+			<div class="donate-ask" id="last-donation-ask">
+				{% include ask_donate.html %}
+			</div>
+			{% include link_final_bottom.html %}
+				
+		</div>
+
+	</div>
+</div>
+
+<div id="overlay">
+	<div class="letter">
+		<div class="content">
+			{% include letter.html %}
+		</div>
+		<a href="#" class="continue">Continue</a>
+	</div>
+</div>
+<a class="idl" href="https://www.internetdefenseleague.org" target="_blank"></a>
+
+<!-- JavaScript -->
+<script type="text/javascript" src="js/min/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="js/min/modal.min.js"></script>
+<script type="text/javascript" src="js/min/common.min.js"></script>
+
+</body>
+</html>
