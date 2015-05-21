@@ -135,7 +135,7 @@ var _cc_animations = {
 			switch (this.options.position) {
 
 				case 'bottom':
-					var pos = 'bottom: 0px; left: 0px;';
+					var pos = 'top: 0px; left: 0px;';
 					var stripPos = 'bottom';
 					break;
 
@@ -145,7 +145,10 @@ var _cc_animations = {
 			// otherwise it will be fixed to the top / bottom
 			var minFloatWidth = this.options.width-1;
 
-			var css = '#_cc_iframe { \
+			var css = 'body._cc_margin { \
+					margin-top: 78px; \
+				} \
+				#_cc_iframe { \
 					position: fixed; '+pos+' \
 					width: 100%; \
 					height: '+this.options.height+'px; \
@@ -158,6 +161,7 @@ var _cc_animations = {
 				}';
 
 			_cc_util.injectCSS('_cc_iframe_css', css);
+			document.body.className = document.body.className += ' _cc_margin';
 
 			var iframe = _cc_util.createIframe(this.options.modalAnimation);
 			_cc_util.bindIframeCommunicator(iframe, this);
@@ -166,6 +170,8 @@ var _cc_animations = {
 		// what to do when the animation stops
 		stop: function() {
 			_cc_util.destroyIframe();
+			document.body.className = document.body.className.replace(
+				'_cc_margin', '');
 		}
 	}
 }
