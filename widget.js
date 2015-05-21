@@ -145,14 +145,16 @@ var _cc_animations = {
 			// otherwise it will be fixed to the top / bottom
 			var minFloatWidth = this.options.width-1;
 
-			var css = 'body._cc_margin { \
-					margin-top: 78px; \
-				} \
-				#_cc_iframe { \
+			var css = '#_cc_iframe { \
 					position: fixed; '+pos+' \
 					width: 100%; \
 					height: '+this.options.height+'px; \
 					z-index: 100001; \
+				} \
+				@media (min-width:1001px) { \
+					body._cc_margin { \
+						margin-top: 78px; \
+					} \
 				} \
 				@media (max-width:1000px) { \
 					#_cc_iframe { \
