@@ -39,11 +39,8 @@ var animations = {
             $('#banner').click(this.doClick.bind(this));
             $('a.close').click(function(e) {
                 e.preventDefault();
-                $('body').addClass('closed');
                 trackLeaderboardStat({stat: 'close_widget', data: 'banner'});
-                setTimeout(function() {
-                    sendMessage('stop');
-                }, 750);
+                sendMessage('stop');
             });
         },
 
