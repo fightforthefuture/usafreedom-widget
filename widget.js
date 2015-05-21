@@ -109,6 +109,64 @@ var _cc_animations = {
 		stop: function() {
 			_cc_util.destroyIframe();
 		}
+	},
+
+	// BANNER ANIMATION
+	banner: {
+
+		// Default options: Override these with _cc_options object (see above)
+		options: {
+			modalAnimation: 'banner',
+			position: 'bottom',
+			height: 78,
+			url: 'https://www.endsurveillance.com'
+		},
+
+		// init copies the _cc_options properties over the default options
+		init: function(options) {
+			for (var k in options) this.options[k] = options[k];
+			return this;
+		},
+
+		// what to do when the animation starts
+		start: function() {
+
+
+			switch (this.options.position) {
+
+				case 'bottom':
+					var pos = 'bottom: 0px; left: 0px;';
+					var stripPos = 'bottom';
+					break;
+
+			}
+
+			// The window must be a certain width to show the floating banner
+			// otherwise it will be fixed to the top / bottom
+			var minFloatWidth = this.options.width-1;
+
+			var css = '#_cc_iframe { \
+					position: fixed; '+pos+' \
+					width: 100%; \
+					height: '+this.options.height+'px; \
+					z-index: 100001; \
+				} \
+				@media (max-width:1000px) { \
+					#_cc_iframe { \
+						display: none !important; \
+					} \
+				}';
+
+			_cc_util.injectCSS('_cc_iframe_css', css);
+
+			var iframe = _cc_util.createIframe(this.options.modalAnimation);
+			_cc_util.bindIframeCommunicator(iframe, this);
+		},
+
+		// what to do when the animation stops
+		stop: function() {
+			_cc_util.destroyIframe();
+		}
 	}
 }
 
@@ -236,19 +294,10 @@ var ready = function() {
 		if (_cc_util.getCookie('_CC_WIDGET_SHOWN')) {
 			return;
 		}
-
-		// Only show on September 10th 2014.
-		// JL HACK ~ remove before the end of September >_>
-		if (new Date().getDate() < 10) {
-			return;
-		}
 	}
 
 	_cc_util.setCookie('_CC_WIDGET_SHOWN', 'true', 365);
 
-	// JL HACK ~ Disable on iPod / iPhone
-	if(/(iPhone|iPod)/g.test(navigator.userAgent))
-		return false;
 
 	if (typeof _cc_animations[_cc_options.animation] == "undefined")
 		return _cc_util.log('Animation undefined: '+_cc_options.animation);
@@ -258,6 +307,8 @@ var ready = function() {
 	setTimeout(function() {
 		animation.init(_cc_options).start();
 	}, _cc_options.delay);
+
+
 }
 
 // Wait for DOM content to load.
