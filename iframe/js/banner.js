@@ -45,7 +45,7 @@ var animations = {
         },
 
         getUrl: function() {
-            return sanitize(this.options.url)+'?from=banner';
+            return sanitize(this.options.url)+(this.options.url.indexOf('?') == -1 ? '?' : '&')+'from=banner';
         },
 
         doClick: function(e) {

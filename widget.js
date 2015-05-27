@@ -119,7 +119,7 @@ var _cc_animations = {
 			modalAnimation: 'banner',
 			position: 'bottom',
 			height: 78,
-			url: 'https://www.endsurveillance.com'
+			url: 'https://www.sunsetthepatriotact.com/?ref=fftf'
 		},
 
 		// init copies the _cc_options properties over the default options
